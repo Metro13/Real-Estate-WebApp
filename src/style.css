@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+section .cards .card{
+    flex-basis: 33.333333%;
+   
+}
+
+.newFont{
+    font-family: 'Nunito Sans', sans-serif;
+    
+}
+div #toggle{
+    display: none;
+
+} 

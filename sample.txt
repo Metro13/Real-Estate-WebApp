@@ -1,0 +1,401 @@
+ foreach($fetchProperty as $property)
+        { 
+           $id = $property->PropertyID;
+           $price = $property->Price;
+           $location = $property->Location;
+           $city = $property->City;
+
+           echo $location.'</br>';
+
+        }
+// combo box
+
+         <label for="gender">
+        Choose gender
+   
+   <select name="gender" id="gender">
+       <option value="male">male</option>
+       <option value="female">female</option>
+   </select>
+    </label>
+
+
+ <form action="subscription.php" class="mb-0 space-y-6" method="POST" ">
+              <div class="md:mx-80">
+                <input type="email" value="<?php echo $_SESSION['id']; ?>" class="w-full text-lg border border-gray-300 px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-5 focus:ring-indigo-600 text-center" name="subEmail" placeholder="Enter email Address">
+              </div>
+              <input type="submit"  name="viewSubmit" id="viewSubmit" value="Subscribe" class="bg-indigo-800 hover:bg-blue-600 text-white text-base font-semibold px-6 py-2 rounded-lg">
+
+
+<div class="relative hidden md:block">
+                        <img src="images/<?php echo $getproperty->Banner; ?>" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+                    </div>
+                    <div class="relative hidden md:block">
+                        <img src="images/<?php echo $getproperty->Banner; ?>" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+                    </div>
+
+
+
+// property display div
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
+  <div class="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
+    <p class="text-sm font-medium text-white sm:mb-1 sm:text-gray-500">Entire house</p>
+    <h2 class="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">Beach House in Collingwood</h2>
+  </div>
+  <div class="col-start-1 row-start-2 px-4 sm:pb-16">
+    <div class="flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4">
+      <svg width="20" height="20" fill="currentColor" class="text-violet-600">
+        <path d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+      </svg>
+      <div class="ml-1">
+        <span class="text-black">4.94</span>
+        <span class="sm:hidden md:inline">(128)</span>
+      </div>
+      <div class="text-base font-normal mx-2">·</div>
+      <div>Collingwood, Ontario</div>
+    </div>
+    <hr class="w-16 border-gray-300 hidden sm:block">
+  </div>
+  <div class="col-start-1 row-start-3 space-y-3 px-4">
+    <p class="flex items-center text-black text-sm font-medium">
+      <img src="/kevin-francis.jpg" alt="" class="w-6 h-6 rounded-full mr-2 bg-gray-100">
+      Hosted by Kevin Francis
+    </p>
+    <button type="button" class="bg-violet-100 text-violet-700 text-base font-semibold px-6 py-2 rounded-lg">Check availability</button>
+  </div>
+  <div class="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
+    <div class="w-full grid grid-cols-3 grid-rows-2 gap-2">
+      <div class="relative col-span-3 row-span-2 md:col-span-2">
+        <img src="/beach-house.jpg" alt="" class="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg" />
+      </div>
+      <div class="relative hidden md:block">
+        <img src="/beach-house-interior.jpg" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+      </div>
+      <div class="relative hidden md:block">
+        <img src="/beach-house-view.jpg" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+// foreach property code
+
+
+
+<div class="p-2 mt-0 bg-blue-700 trans text-white h-auto">
+        <table>   
+            <?php foreach($fetchProperty as $property){?>
+              <tr>
+                <td width="70%">
+                <img src="images/<?php echo  $var; ?>" class="rounded-lg" style="width:250px" alt ="baseImage"/>
+                </td>
+                <td width="10%">Mwk <?php echo $property->Price; ?></td>
+                <td width="10%"><?php echo $property->Location; ?></td>
+                <td width="10%"><?php echo $property->City; ?></td>
+                <td width="20%"><a href="<?php echo BASE_URL.'checkout.php?propid='.$property->PropertyID; ?>" class="button">checkout</a></td>
+              </tr>
+              <?php }?>
+          </table>
+      
+</div>
+
+
+
+
+
+
+<div> <a href="logout.php" class="logout">Logout</a> </div>
+    <h2>Checkout</h2>
+    <table>
+        <tr>
+          <td width="70%"><img src="images/<?php echo $images->image; ?>" style="width:250px" /></td>
+          <td width="10%">$
+            <?php echo $property->Price; ?>
+          </td>
+          <td width="20%">
+          <?php require 'paypalButton.php'; ?>
+          </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+            if( $total < 1 ) // checking number of rows affected
+            {
+                $mess =  "There is no Match";
+                return $mess;
+            }
+            else{
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+
+                    $mess =  "There is a Match";
+                    $_SESSION['id'] = $row['EmailAddress'];
+                    echo $mess;
+                    echo "the session_id = " . $_SESSION['id'];
+
+                }
+            }
+
+
+
+
+
+
+
+             <div class="mt-2 text-white text-center ">
+          <!--- Social medial icons-->
+                <span class=" text-2xl">
+                  <i class="fa fa-facebook  hover:text-pink-500 mr-5 transition duration-500 ease-in-out"></i>
+                  <i class="fa fa-twitter mr-5 hover:text-pink-500 transition duration-500 ease-in-out"></i>
+                  <i class="fa fa-instagram mr-5 hover:text-pink-500 transition duration-500 ease-in-out"></i>
+                  <i class="fa fa-pinterest mr-5 hover:text-pink-500 transition duration-500 ease-in-out"></i>
+                </span>
+                   
+                   
+          </div>
+
+
+          <h5 class="text-center text-xl text-white font-bold underline py-3">About us</h5>
+            <p class=" font-light text-gray-200">
+              Justice Properties is a real estate company that manages rental properties and sells properties for clients who needs their properties sold all over Malawi.
+            </p>
+            <p class="pt-4 text-base font-light text-gray-200">
+              Copyright &copy; 2021 All rights Reserved |
+              <span class="text-red-500 font-bold">JusticeProperties.com</span>
+            </p>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          
+    <div data-aos="zoom-out" class="property hidden">
+        <?php foreach ($fetchProperty as $property){?>
+        <!-- Property Display Div -->
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 mx-4 mt-4 rounded-xl sm:px-8 sm:py-12 sm:gap-x-8 md:py-16 bg-gray-800 py-5">
+            <div class="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
+                <!-- Property type -->
+                <p class="text-sm font-medium text-white sm:mb-1 sm:text-gray-200">
+                    <?php echo $property->PropertyStatus; ?></p>
+                <!-- Property full Address Div -->
+                <h2 class="text-xl text-white sm:text-2xl sm:leading-7 font-bold md:text-3xl">Morden
+                    <?php echo $property->PropertyType; ?> House in <?php echo $property->City?></h2>
+            </div>
+            <!-- Property Description Div -->
+            <div class="col-start-1 row-start-2 px-4 sm:pb-16">
+                <div class="flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4">
+                    <svg width="20" height="20" fill="red" class="text-violet-600 ">
+                        <path
+                            d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                    </svg>
+                    <div class="ml-1">
+                        <span class="text-indigo-600 font-bold"><?php echo $property->Currency; ?></span>
+                        <span class="space-x-10 sm:hidden md:inline text-white"><?php echo $property->Price; ?></span>
+                    </div>
+                    <div class="text-base text-white font-normal mx-2">·</div>
+                    <div class="text-white "><?php echo $property->Location; ?> , <?php echo $property->City; ?>.</div>
+                </div>
+                <div class="col-start-1 px-0">
+                    <h4 class="font-bold text-gray-200 underline">Description</h4>
+                    <p class=" py-4 font-light text-white"><?php echo $property->Description;?></p>
+                </div>
+                <hr class="w-16 border-gray-300 hidden sm:block">
+            </div>
+
+
+            <!-- Property broking vendor Div -->
+            <div class="col-start-1 row-start-3 space-y-3 px-4">
+                <p class="flex items-center font-medium text-white text-sm py-3">
+                    <img src="images/logo.png" alt="" class="w-8 h-8 rounded-full mr-2 bg-gray-100">
+                    Justice Properties
+                </p>
+
+                <!-- Property Checkout Div -->
+                <form action="checkout.php" method="post">
+                    <input type="hidden" name="pid" id="pid" value="<?php echo $property->PropertyID;?>">
+                    <input type="submit" value="Buy"
+                        class=" bg-indigo-800 hover:bg-blue-500 text-white text-base font-semibold px-6 py-2 rounded-lg">
+                </form>
+            </div>
+            <!-- Property banner image Display Div -->
+            <div class="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
+                <div class="w-full grid grid-cols-3 grid-rows-2 gap-2">
+                    <div class="relative col-span-3 row-span-2 md:col-span-2">
+                        <img src="images/<?php echo $property->Banner; ?>" alt="houseBanner"
+                            class="absolute md:w-100 md:h-80 inset-0 w-full h-full object-cover bg-gray-100  rounded-lg shadow-xl" />
+                    </div>
+                    <div class="relative hidden md:block">
+                        <img src="images/<?php echo $property->Banner; ?>" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+                    </div>
+                    <div class="relative hidden md:block">
+                        <img src="images/<?php echo $property->Banner; ?>" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php }?>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    ///////////////////// properties icons
+     <div class="flex md:mt-2 mt-2 justify-center">
+                    <div class="">
+                        <span class="flex p-1 text-gray-700">
+                            <i class="fa fa-bathtub text-pink-800 p-1"></i>
+                            <p>2 Rooms</p>
+                        </span>
+                    </div>
+                    <div class="">
+                        <span class="flex p-1 text-gray-700">
+                            <i class="fa fa-cubes text-pink-800 p-1"></i>
+                            <p>50x50mm</p>
+                        </span>
+                    </div>
+                    <div class="">
+                        <span class="flex p-1 text-gray-700">
+                            <i class="fa fa-bed text-pink-800 p-1"></i>
+                            <p>2 Rooms</p>
+                        </span>
+
+                    </div>
+                </div>
+
+
+                 <div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16 bg-gray-100 py-5">
+            <div class="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
+                <!-- Property type -->
+                <p class="text-sm font-medium text-white sm:mb-1 sm:text-gray-500">
+                    <?php echo $getproperty ->PropertyStatus; ?></p>
+                <!-- Property full Address Div -->
+                <h2 class="text-xl text-white sm:text-2xl sm:leading-7 sm:text-indigo-600 font-bold md:text-3xl">Morden
+                    <?php echo $getproperty ->PropertyType; ?> House in <?php echo $getproperty->City?></h2>
+            </div>
+            <!-- Property Description Div -->
+            <div class="col-start-1 row-start-2 px-4 sm:pb-16">
+                <div class="flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4">
+                    <svg width="20" height="20" fill="red" class="text-violet-600 ">
+                        <path
+                            d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                    </svg>
+                    <div class="ml-1">
+                        <span class="text-indigo-600 font-bold"><?php echo $getproperty->Currency; ?></span>
+                        <span class="sm:hidden md:inline"><?php echo $getproperty->Price; ?></span>
+                    </div>
+                    <div class="text-base font-normal mx-2">·</div>
+                    <div class="text-bg-blue-500 "><?php echo $getproperty->Location; ?> ,
+                        <?php echo $getproperty ->City; ?>.</div>
+                </div>
+                <div class="col-start-1 px-0">
+                    <h4 class="font-bold text-gray-500">Description</h4>
+                    <p class=" py-4 font-normal"><?php echo $getproperty->Description;?></p>
+                </div>
+                <hr class="w-16 border-gray-300 hidden sm:block">
+            </div>
+
+
+            <!-- Property broking vendor Div -->
+            <div class="col-start-1 row-start-3 space-y-3 px-4">
+                <p class="flex items-center font-medium text-black text-sm py-3">
+                    <img src="images/logo.png" alt="" class="w-8 h-8 rounded-full mr-2 bg-gray-100">
+                    Justice Properties
+                </p>
+
+                <!-- Property Checkout Div -->
+                <?php require 'paypalButton.php'; ?>
+            </div>
+            <!-- Property banner image Display Div -->
+            <div class="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
+                <div class="w-full grid grid-cols-3 grid-rows-2 gap-2">
+                    <div class="relative col-span-3 row-span-2 md:col-span-2">
+                        <img src="images/<?php echo $getproperty->Banner; ?>" alt="houseBanner"
+                            class="absolute md:w-100 md:h-80 inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg hover:shadow-xl" />
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /////////////////// numbers
+        <div class="md:mx-0 md:my-0 grid md:grid-cols-2 grid-cols-1 py-6 ">
+
+
+            <div
+                class="md:col-start-1 md:row-start-1 newFont transition duration-500 ease-in-out hover:bg-gray-800 col-start-1 md:transform md:skew-y-3 bg-pink-600 shadow-xl md:my-8 my-2 rounded-2xl mx-10">
+                <div class="md:mt-4 mt-2 mx-10 py-4 rect">
+                    <h2 class="text-center font-black md:text-xl text-lg">Properties</h2>
+                    <h2 class="text-center font-normal text-xl">Over</h2>
+                    <h1 id="counter" class="font-black text-3xl text-center">1000</h1>
+                    <p class="text-center font-light">Available properties</p>
+                </div>
+
+            </div>
+            <div
+                class="md:col-start-2 md:row-start-1  newFont transition duration-500 ease-in-out hover:bg-gray-800 col-start-1 md:transform md:skew-y-3 bg-pink-600 shadow-xl md:my-8 my-2 rounded-2xl mx-10">
+                <div class="md:mt-4 mt-2 mx-10 py-4 rect">
+                    <h2 class="text-center font-black md:text-xl text-lg">Help & Support</h2>
+                    <h2 class="text-center font-normal text-xl">Available</h2>
+                    <h1 class="font-black text-center text-3xl">12</h1>
+                    <p class="text-center font-light">hours daily</p>
+                </div>
+            </div>
+            <div
+                class="md:col-start-1 md:row-start-2 newFont transition duration-500 ease-in-out hover:bg-gray-800 row-start-3 md:transform md:skew-y-3 bg-pink-600 shadow-xl md:my-8 my-2 rounded-2xl mx-10">
+                <div class="md:mt-4 mt-2 mx-10 py-4 rect">
+                    <h2 class="text-center font-black md:text-xl text-lg">Payment Security</h2>
+                    <h2 class="text-center font-normal text-xl">Paypal safety Transaction guarantee</h2>
+                    <h1 id="counter" class="text-center font-black text-3xl">100</h1>
+                    <p class="text-center font-black">%</p>
+                </div>
+            </div>
+            <div
+                class="md:col-start-2 md:row-start-2 newFont transition duration-500 ease-in-out hover:bg-gray-800 col-start-1 bg-pink-600 md:transform md:skew-y-3 shadow-xl md:my-8 my-2 rounded-2xl mx-10">
+                <div class="md:mt-4 mt-2 mx-10 py-4 rect">
+                    <h2 class="text-center font-black md:text-xl text-lg">Clients</h2>
+                    <h2 class="text-center font-normal text-xl">Over</h2>
+                    <h1 id="counter" class="text-center font-black text-3xl">1000</h1>
+
+                    <p class="text-center font-light">Registered clients</p>
+                </div>
+            </div>
