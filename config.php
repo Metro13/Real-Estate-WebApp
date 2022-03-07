@@ -21,8 +21,8 @@
 
 	// configurations for sandbox Transactions
 	else{
-		define("PayPal_CLIENT_ID", "ATDV3X3ftdxIDC97H99-XgtTca7cpMsyPDtOrxuGKSMYzphNivsu8YFFWTVkRK5CnXbr93BY9liDNAeY");
-		define("PayPal_SECRET", "EPFvBgOjceLpCmoCKKrsXEFzcR4OtJh4hDimKoobA5Md3qpJGrByUgxh6leUMqzwrxrp_BwR8fXP9Vv3");
+		define("PayPal_CLIENT_ID", "###########################################");
+		define("PayPal_SECRET", "#################################################");
 		define("PayPal_BASE_URL", "https://api-m.sandbox.paypal.com/v1/");
 	}
 
